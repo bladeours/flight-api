@@ -11,10 +11,12 @@ import java.sql.Time;
 public class Flight {
     @Id
     private Long id;
-//    @ManyToOne
-//    private Airport departureAirport;
-//    @ManyToOne
-//    private Airport arrivalAirport;
+    @ManyToOne
+    @JoinColumn(name = "departure_airport")
+    private Airport departureAirport;
+    @ManyToOne
+    @JoinColumn(name = "arrival_airport")
+    private Airport arrivalAirport;
     @Column
     private Date departureDate;
     @Column
@@ -26,7 +28,7 @@ public class Flight {
     @Column
     private double price;
     @ManyToOne
-//    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "company_id")
     @JsonBackReference
     private Company company;
     @Column
@@ -35,9 +37,11 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(Long id, Airport departureAirport, Airport arrivalAirport, Date departureDate, Time flightTime,
+    public Flight(Long id, Airport departureAirport, Airport arrivalAirport, Airport departureAirport1, Airport arrivalAirport1, Date departureDate, Time flightTime,
                   int allSeats, int freeSeats, double price, Company company, int distance_km) {
         this.id = id;
+        this.departureAirport = departureAirport1;
+        this.arrivalAirport = arrivalAirport1;
 //        this.departureAirport = departureAirport;
 //        this.arrivalAirport = arrivalAirport;
         this.departureDate = departureDate;
@@ -141,6 +145,22 @@ public class Flight {
                 ", company=" + company.getId() +
                 ", distance_km=" + distance_km +
                 '}';
+    }
+
+    public Airport getDepartureAirport() {
+        return departureAirport;
+    }
+
+    public void setDepartureAirport(Airport departureAirport) {
+        this.departureAirport = departureAirport;
+    }
+
+    public Airport getArrivalAirport() {
+        return arrivalAirport;
+    }
+
+    public void setArrivalAirport(Airport arrivalAirport) {
+        this.arrivalAirport = arrivalAirport;
     }
 }
 

@@ -3,6 +3,7 @@ package com.flight.api.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -14,8 +15,7 @@ public class Company {
     @Column
     private String name;
     @JsonManagedReference
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name = "company_id")
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "company")
     private List<Flight> flights;
 
     public Company() {

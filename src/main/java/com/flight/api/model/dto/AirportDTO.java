@@ -1,27 +1,18 @@
-package com.flight.api.model;
+package com.flight.api.model.dto;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "airport")
-public class Airport {
-
-    @Id
+public class AirportDTO {
     private String code;
-    @Column
     private String city;
-    @Column
     private String country;
-    @OneToMany(mappedBy = "departureAirport")
-    private List<Flight> departureFlights;
-    @OneToMany(mappedBy = "arrivalAirport")
-    private List<Flight> arrivalFlights;
+    private List<FlightDTO> departureFlights;
+    private List<FlightDTO> arrivalFlights;
 
-    public Airport() {
+    public AirportDTO() {
     }
 
-    public Airport(String code, String city, String country, List<Flight> departureFlights, List<Flight> arrivalFlights) {
+    public AirportDTO(String code, String city, String country, List<FlightDTO> departureFlights, List<FlightDTO> arrivalFlights) {
         this.code = code;
         this.city = city;
         this.country = country;
@@ -53,19 +44,20 @@ public class Airport {
         this.country = country;
     }
 
-    public List<Flight> getDepartureFlights() {
+    public List<FlightDTO> getDepartureFlights() {
         return departureFlights;
     }
 
-    public void setDepartureFlights(List<Flight> departureFlights) {
+    public void setDepartureFlights(List<FlightDTO> departureFlights) {
         this.departureFlights = departureFlights;
     }
 
-    public List<Flight> getArrivalFlights() {
+    public List<FlightDTO> getArrivalFlights() {
         return arrivalFlights;
     }
 
-    public void setArrivalFlights(List<Flight> arrivalFlights) {
+    public void setArrivalFlights(List<FlightDTO> arrivalFlights) {
         this.arrivalFlights = arrivalFlights;
     }
 }
+

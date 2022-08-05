@@ -27,8 +27,6 @@ public class CompanyController {
 
     @GetMapping("/flights/{companyId}")
     public List<Flight> getFlightsForCompany(@PathVariable String companyId){
-//        System.out.println(companyService.getFlightsForCompany(Long.parseLong(companyId)));
         return companyService.getFlightsForCompany(Long.parseLong(companyId));
-//        return null;
     }
 }

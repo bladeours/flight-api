@@ -1,6 +1,7 @@
 package com.flight.api.controller;
 
 import com.flight.api.model.Airport;
+import com.flight.api.model.dto.AirportDTO;
 import com.flight.api.service.AirportService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,7 @@ public class AirportController {
     }
 
     @GetMapping("/{code}")
-    public Airport getAirport(@PathVariable String code){
+    public AirportDTO getAirport(@PathVariable String code){
         return airportService.findByCode(code);
     }
 }
