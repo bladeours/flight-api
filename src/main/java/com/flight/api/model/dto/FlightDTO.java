@@ -1,19 +1,15 @@
 package com.flight.api.model.dto;
 
-import com.flight.api.model.Company;
+import com.flight.api.model.dto.raw.AirportRAW;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.sql.Date;
 import java.sql.Time;
 
 public class FlightDTO {
 
     private Long id;
-//    private Airport departureAirport;
-//    private Airport arrivalAirport;
+    private AirportRAW departureAirport;
+    private AirportRAW arrivalAirport;
     private Date departureDate;
     private Time flightTime;
     private int allSeats;
@@ -25,9 +21,11 @@ public class FlightDTO {
     public FlightDTO() {
     }
 
-    public FlightDTO(Long id, Date departureDate, Time flightTime, int allSeats,
+    public FlightDTO(Long id, AirportRAW departureAirport, AirportRAW arrivalAirport, Date departureDate, Time flightTime, int allSeats,
                      int freeSeats, double price, CompanyDTO company, int distance_km) {
         this.id = id;
+        this.departureAirport = departureAirport;
+        this.arrivalAirport = arrivalAirport;
         this.departureDate = departureDate;
         this.flightTime = flightTime;
         this.allSeats = allSeats;
@@ -99,5 +97,21 @@ public class FlightDTO {
 
     public void setDistance_km(int distance_km) {
         this.distance_km = distance_km;
+    }
+
+    public AirportRAW getDepartureAirport() {
+        return departureAirport;
+    }
+
+    public void setDepartureAirport(AirportRAW departureAirport) {
+        this.departureAirport = departureAirport;
+    }
+
+    public AirportRAW getArrivalAirport() {
+        return arrivalAirport;
+    }
+
+    public void setArrivalAirport(AirportRAW arrivalAirport) {
+        this.arrivalAirport = arrivalAirport;
     }
 }

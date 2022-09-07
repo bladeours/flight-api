@@ -2,17 +2,19 @@ package com.flight.api.repository;
 
 import com.flight.api.model.Company;
 import com.flight.api.model.Flight;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Service;
+import com.flight.api.model.dto.FlightDTO;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 
 @Transactional
 public class CompanyCustomRepositoryImpl implements CompanyCustomRepository{
 
+//    private ModelMapper modelMapper = new ModelMapper();
 
     public CompanyCustomRepositoryImpl() {
     }

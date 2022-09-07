@@ -37,13 +37,11 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(Long id, Airport departureAirport, Airport arrivalAirport, Airport departureAirport1, Airport arrivalAirport1, Date departureDate, Time flightTime,
+    public Flight(Long id, Airport departureAirport, Airport arrivalAirport, Date departureDate, Time flightTime,
                   int allSeats, int freeSeats, double price, Company company, int distance_km) {
         this.id = id;
-        this.departureAirport = departureAirport1;
-        this.arrivalAirport = arrivalAirport1;
-//        this.departureAirport = departureAirport;
-//        this.arrivalAirport = arrivalAirport;
+        this.departureAirport = departureAirport;
+        this.arrivalAirport = arrivalAirport;
         this.departureDate = departureDate;
         this.flightTime = flightTime;
         this.allSeats = allSeats;
@@ -60,22 +58,6 @@ public class Flight {
     public void setId(Long id) {
         this.id = id;
     }
-
-//    public Airport getDepartureAirport() {
-//        return departureAirport;
-//    }
-//
-//    public void setDepartureAirport(Airport departureAirport) {
-//        this.departureAirport = departureAirport;
-//    }
-//
-//    public Airport getArrivalAirport() {
-//        return arrivalAirport;
-//    }
-//
-//    public void setArrivalAirport(Airport arrivalAirport) {
-//        this.arrivalAirport = arrivalAirport;
-//    }
 
     public Date getDepartureDate() {
         return departureDate;

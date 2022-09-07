@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FlightController {
 
     private final FlightService flightService;
-    private ModelMapper modelMapper = new ModelMapper();
+    private final ModelMapper modelMapper = new ModelMapper();
     public FlightController(FlightService flightService) {
         this.flightService = flightService;
     }
