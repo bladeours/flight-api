@@ -1,7 +1,5 @@
 package com.flight.api.controller;
 
-import com.flight.api.model.Company;
-import com.flight.api.model.Flight;
 import com.flight.api.model.dto.CompanyDTO;
 import com.flight.api.model.dto.FlightDTO;
 import com.flight.api.service.FlightService;
@@ -23,11 +21,21 @@ public class FlightController {
 
     @GetMapping("/{id}")
     public FlightDTO getFlight(@PathVariable String id){
-        return modelMapper.map(flightService.getFlight(Long.parseLong(id)),FlightDTO.class);
+        try{
+            return modelMapper.map(flightService.getFlight(Long.parseLong(id)),FlightDTO.class);
+        }catch (NumberFormatException e){
+            throw new NumberFormatException("flight id must be a number");
+        }
+
     }
 
     @GetMapping("/company/{id}")
     public CompanyDTO getCompanyForFlight(@PathVariable String id){
-        return flightService.getCompany(Long.parseLong(id));
+        try {
+            return flightService.getCompany(Long.parseLong(id));
+        }catch (NumberFormatException e){
+            throw new NumberFormatException("flight id must be a number");
+        }
+
     }
 }

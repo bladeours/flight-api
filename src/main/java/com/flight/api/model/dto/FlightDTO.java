@@ -4,13 +4,14 @@ import com.flight.api.model.dto.raw.AirportRAW;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
 
 public class FlightDTO {
 
     private Long id;
     private AirportRAW departureAirport;
     private AirportRAW arrivalAirport;
-    private Date departureDate;
+    private Timestamp departureDate;
     private Time flightTime;
     private int allSeats;
     private int freeSeats;
@@ -21,7 +22,7 @@ public class FlightDTO {
     public FlightDTO() {
     }
 
-    public FlightDTO(Long id, AirportRAW departureAirport, AirportRAW arrivalAirport, Date departureDate, Time flightTime, int allSeats,
+    public FlightDTO(Long id, AirportRAW departureAirport, AirportRAW arrivalAirport, Timestamp departureDate, Time flightTime, int allSeats,
                      int freeSeats, double price, CompanyDTO company, int distance_km) {
         this.id = id;
         this.departureAirport = departureAirport;
@@ -43,11 +44,11 @@ public class FlightDTO {
         this.id = id;
     }
 
-    public Date getDepartureDate() {
+    public Timestamp getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Date departureDate) {
+    public void setDepartureDate(Timestamp departureDate) {
         this.departureDate = departureDate;
     }
 

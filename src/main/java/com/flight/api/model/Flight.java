@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "flight")
@@ -18,7 +19,7 @@ public class Flight {
     @JoinColumn(name = "arrival_airport")
     private Airport arrivalAirport;
     @Column
-    private Date departureDate;
+    private Timestamp departureDate;
     @Column
     private Time flightTime;
     @Column
@@ -37,7 +38,7 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(Long id, Airport departureAirport, Airport arrivalAirport, Date departureDate, Time flightTime,
+    public Flight(Long id, Airport departureAirport, Airport arrivalAirport, Timestamp departureDate, Time flightTime,
                   int allSeats, int freeSeats, double price, Company company, int distance_km) {
         this.id = id;
         this.departureAirport = departureAirport;
@@ -59,11 +60,11 @@ public class Flight {
         this.id = id;
     }
 
-    public Date getDepartureDate() {
+    public Timestamp getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Date departureDate) {
+    public void setDepartureDate(Timestamp departureDate) {
         this.departureDate = departureDate;
     }
 

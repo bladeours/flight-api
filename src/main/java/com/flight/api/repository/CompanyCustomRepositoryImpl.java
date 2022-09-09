@@ -14,7 +14,6 @@ import java.util.List;
 @Transactional
 public class CompanyCustomRepositoryImpl implements CompanyCustomRepository{
 
-//    private ModelMapper modelMapper = new ModelMapper();
 
     public CompanyCustomRepositoryImpl() {
     }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 @Service
@@ -28,7 +29,12 @@ public class CompanyService {
     }
 
     public Company getCompany(Long id){
-        return companyRepository.findById(id).get();
+        try{
+            return companyRepository.findById(id).get();
+        }catch (NoSuchElementException e){
+            throw new NoSuchElementException("there is no company with id=" + id);
+        }
+
     }
 
     public List<Flight> getFlightsForCompany(Long companyId){

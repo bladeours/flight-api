@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.NoSuchElementException;
 
 @Service
 @Transactional
@@ -21,7 +22,12 @@ public class FlightService {
     }
 
     public Flight getFlight(Long id){
-        return flightRepository.findById(id).get();
+        try {
+            return flightRepository.findById(id).get();
+        }catch (NoSuchElementException e){
+            throw  new NoSuchElementException("There is no flight with id=" + id );
+        }
+
     }
 
     public CompanyDTO getCompany(Long id){

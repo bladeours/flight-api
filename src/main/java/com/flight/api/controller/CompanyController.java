@@ -27,12 +27,22 @@ public class CompanyController {
 
     @GetMapping("/{id}")
     public CompanyDTO getCompany(@PathVariable String id){
-        return modelMapper.map(companyService.getCompany(Long.parseLong(id)), CompanyDTO.class);
+        try{
+            return modelMapper.map(companyService.getCompany(Long.parseLong(id)), CompanyDTO.class);
+        }catch (NumberFormatException e) {
+            throw new NumberFormatException("company id must be a number");
+        }
+
     }
 
     @GetMapping("/flights/{companyId}")
     public List<FlightDTO> getFlightsForCompany(@PathVariable String companyId){
-        return modelMapper.map(companyService.getFlightsForCompany(Long.parseLong(companyId)),
-                new TypeToken<List<FlightDTO>>() {}.getType());
+        try{
+            return modelMapper.map(companyService.getFlightsForCompany(Long.parseLong(companyId)),
+                                    new TypeToken<List<FlightDTO>>() {}.getType());
+
+        }catch (NumberFormatException e) {
+            throw new NumberFormatException("company id must be a number");
+        }
     }
 }
