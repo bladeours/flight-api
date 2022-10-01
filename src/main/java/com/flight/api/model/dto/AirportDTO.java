@@ -59,5 +59,16 @@ public class AirportDTO {
     public void setArrivalFlights(List<FlightDTO> arrivalFlights) {
         this.arrivalFlights = arrivalFlights;
     }
+
+    @Override
+    public String toString() {
+        return "AirportDTO{" +
+                "code='" + code + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", departureFlights=" + departureFlights +
+                ", arrivalFlights=" + arrivalFlights +
+                '}';
+    }
 }
 

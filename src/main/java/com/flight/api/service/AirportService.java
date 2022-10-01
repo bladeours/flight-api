@@ -3,12 +3,14 @@ package com.flight.api.service;
 import com.flight.api.model.Airport;
 import com.flight.api.model.dto.AirportDTO;
 import com.flight.api.model.dto.FlightDTO;
+import com.flight.api.model.dto.raw.AirportRAW;
 import com.flight.api.repository.AirportRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -22,8 +24,10 @@ public class AirportService {
         this.airportRepository = airportRepository;
     }
 
-    public List<Airport> listAllAirports(){
-        return airportRepository.findAll();
+    public List<AirportRAW> listAllAirports(){
+        System.out.println(airportRepository.findAll());
+        return modelMapper.map(airportRepository.findAll(), new TypeToken<List<AirportRAW>>() {}.getType()) ;
+//        return new ArrayList<>();
     }
 
     public AirportDTO findByCode(String code){
