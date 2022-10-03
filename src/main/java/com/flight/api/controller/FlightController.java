@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/flight")
 public class FlightController {
@@ -36,6 +38,11 @@ public class FlightController {
         }catch (NumberFormatException e){
             throw new NumberFormatException("flight id must be a number");
         }
+    }
 
+    @GetMapping("{departureCode}/{arrivalCode}")
+    public List<FlightDTO> getFlightForCodes(@PathVariable String departureCode, @PathVariable String arrivalCode){
+        System.out.println(flightService.getFlightForCodes(departureCode, arrivalCode));
+        return flightService.getFlightForCodes(departureCode, arrivalCode);
     }
 }
