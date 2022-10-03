@@ -38,8 +38,9 @@ public class FlightService {
         return modelMapper.map(flightRepository.getCompany(flight), CompanyDTO.class);
     }
 
-    public List<FlightDTO> getFlightForCodes(String departureCode, String arrivalCode){
-        return modelMapper.map(flightRepository.getFlightForCodes(departureCode, arrivalCode),
+    public List<FlightDTO> getFlightForCodes(String departureCode, String arrivalCode, String date){
+        System.out.println(date);
+        return modelMapper.map(flightRepository.getFlightForCodes(departureCode, arrivalCode, date),
                 new TypeToken<List<FlightDTO>>() {}.getType());
     }
 

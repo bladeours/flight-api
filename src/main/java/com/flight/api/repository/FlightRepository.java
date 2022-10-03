@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface FlightRepository extends JpaRepository<Flight, Long>, FlightCustomRepository {
 
-    @Query("SELECT f from Flight f where f.departureAirport.code = ?1 and f.arrivalAirport.code = ?2")
-    List<Flight> getFlightForCodes(String departureCode, String arrivalCode);
+    @Query(value = "SELECT * from flight f where f.departure_airport = ?1 and f.arrival_airport = ?2" +
+            " and DATE(f.departure_date) = ?3",
+            nativeQuery = true)
+    List<Flight> getFlightForCodes(String departureCode, String arrivalCode, String date);
 }

@@ -4,10 +4,7 @@ import com.flight.api.model.dto.CompanyDTO;
 import com.flight.api.model.dto.FlightDTO;
 import com.flight.api.service.FlightService;
 import org.modelmapper.ModelMapper;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,8 +38,9 @@ public class FlightController {
     }
 
     @GetMapping("{departureCode}/{arrivalCode}")
-    public List<FlightDTO> getFlightForCodes(@PathVariable String departureCode, @PathVariable String arrivalCode){
-        System.out.println(flightService.getFlightForCodes(departureCode, arrivalCode));
-        return flightService.getFlightForCodes(departureCode, arrivalCode);
+    public List<FlightDTO> getFlightForCodes(@PathVariable String departureCode, @PathVariable String arrivalCode,
+                                             @RequestParam String date){
+        System.out.println(flightService.getFlightForCodes(departureCode, arrivalCode, date));
+        return flightService.getFlightForCodes(departureCode, arrivalCode, date);
     }
 }
