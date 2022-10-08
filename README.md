@@ -1,4 +1,4 @@
-# flights REST API
+# flight REST API
 Simple REST API that returns information about airports.
 
 ## Table of Contents
@@ -12,7 +12,7 @@ Simple REST API that returns information about airports.
 ## General Info
 This REST API is a part of Flight Search Engine project. \
 I've created this project to get information about flights, I'm using it in
-[flight search engine MVC]() project. It uses MySQL database to get data.
+[flight search engine MVC](https://github.com/bladeours/flight-search-engine) project. It uses MySQL database to get data.
 
 
 ## Technologies Used

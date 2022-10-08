@@ -1,5 +1,6 @@
 package com.flight.api.controller;
 
+import com.flight.api.exception.DateFormatException;
 import com.flight.api.model.dto.CompanyDTO;
 import com.flight.api.model.dto.FlightDTO;
 import com.flight.api.service.FlightService;
@@ -39,7 +40,7 @@ public class FlightController {
 
     @GetMapping("{departureCode}/{arrivalCode}")
     public List<FlightDTO> getFlightForCodes(@PathVariable String departureCode, @PathVariable String arrivalCode,
-                                             @RequestParam String date){
+                                             @RequestParam String date) throws DateFormatException {
         System.out.println(flightService.getFlightForCodes(departureCode, arrivalCode, date));
         return flightService.getFlightForCodes(departureCode, arrivalCode, date);
     }
