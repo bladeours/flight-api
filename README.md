@@ -219,14 +219,7 @@ parameters:
 * date - date of flight in format "YYYY-MM-DD"
 
 Return:
-* departure airport
-* arrival airport
-* departure date
-* flight time
-* all seats
-* free seats
-* price
-* company
+* list of flights
 
 Here is sample output:
   \
