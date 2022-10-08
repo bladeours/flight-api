@@ -114,7 +114,7 @@ GET: `/company/flights/{id}` \
 Return:
 * list of flights for company with id = {id}
 
-  Here is sample output:
+Here is sample output:
   \
   `curl localhost:8082/company/flights/3`
 ```
@@ -183,7 +183,7 @@ Return:
 * price
 * company
 
-  Here is sample output:
+Here is sample output:
   \
   `curl localhost:8082/flights/3`
 ```
@@ -228,7 +228,7 @@ Return:
 * price
 * company
 
-  Here is sample output:
+Here is sample output:
   \
   `curl localhost:80822/flight/CXI/ABY?date=2023-05-18`
 ```
