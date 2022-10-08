@@ -6,7 +6,7 @@ Simple REST API that returns information about airports.
 * [Authorization](#authorization)
 * [Technologies Used](#technologies-used)
 * [Setup](#setup)
-* [endpoints](#endpoints)
+* [Endpoints](#endpoints)
 
 
 ## General Info
@@ -113,6 +113,7 @@ Return all airports with fields:
 GET: `/company/flights/{id}` \
 Return:
 * list of flights for company with id = {id}
+
   Here is sample output:
   \
   `curl localhost:8082/company/flights/3`
@@ -181,6 +182,7 @@ Return:
 * free seats
 * price
 * company
+
   Here is sample output:
   \
   `curl localhost:8082/flights/3`
@@ -214,7 +216,8 @@ Return:
 
 GET: `/flight/{departureCode}/{arrivalCode}?=date` \
 parameters:
-*date - date of flight in format "YYYY-MM-DD"
+* date - date of flight in format "YYYY-MM-DD"
+
 Return:
 * departure airport
 * arrival airport
