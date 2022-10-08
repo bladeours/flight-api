@@ -6,7 +6,7 @@ Simple REST API that returns information about airports.
 * [Authorization](#authorization)
 * [Technologies Used](#technologies-used)
 * [Setup](#setup)
-* [First Steps](#first-steps)
+* [endpoints](#endpoints)
 
 
 ## General Info
@@ -25,6 +25,233 @@ I've created this project to get information about flights, I'm using it in
 
 ## Setup
 // TODO
-## First Steps
-// TODO
+## endpoints
 
+### Airport
+#### Airport by code
+GET: `/airport/{code}` \
+Return:
+* DepartureFlights
+* ArrivalFlights
+* code
+* city
+* country
+
+Here is sample output:
+\
+`curl localhost:8082/airport/WAW`
+```
+{
+   "code":"ZSS",
+   "city":"Sassandra",
+   "country":"Ivory Coast",
+   "departureFlights":[
+      {
+         "id":121,
+         "departureAirport":{
+            "code":"ZSS",
+            "city":"Sassandra",
+            "country":"Ivory Coast"
+         },
+         "arrivalAirport":{
+            "code":"SBY",
+            "city":"Salisbury, MD",
+            "country":"USA"
+         },
+         "departureDate":1668200839000,
+         "flightTime":"08:56:57",
+         "allSeats":156,
+         "freeSeats":104,
+         "price":1540.164,
+         "company":{
+            "id":13,
+            "name":"SkyWest Airlines"
+         },
+         "distance_km":7874
+      }
+   ],
+   "arrivalFlights":[
+      {
+         "id":72,
+         "departureAirport":{
+            "code":"SBY",
+            "city":"Salisbury, MD",
+            "country":"USA"
+         },
+         "arrivalAirport":{
+            "code":"ZSS",
+            "city":"Sassandra",
+            "country":"Ivory Coast"
+         },
+         "departureDate":1670173639000,
+         "flightTime":"08:56:57",
+         "allSeats":236,
+         "freeSeats":206,
+         "price":1283.47,
+         "company":{
+            "id":13,
+            "name":"SkyWest Airlines"
+         },
+         "distance_km":7874
+      }
+   ]
+}
+```
+
+#### All airports
+
+GET: `/airport/airports` \
+Return all airports with fields:
+* code
+* city
+* country
+
+### Company
+
+#### Company by ID
+
+GET: `/company/flights/{id}` \
+Return:
+* list of flights for company with id = {id}
+  Here is sample output:
+  \
+  `curl localhost:8082/company/flights/3`
+```
+[
+   {
+      "id":40,
+      "departureAirport":{
+         "code":"GNV",
+         "city":"Gainesville, FL",
+         "country":"USA"
+      },
+      "arrivalAirport":{
+         "code":"ILM",
+         "city":"Wilmington, NC",
+         "country":"USA"
+      },
+      "departureDate":1686045276000,
+      "flightTime":"07:09:03",
+      "allSeats":320,
+      "freeSeats":178,
+      "price":1802.46,
+      "company":{
+         "id":3,
+         "name":"Virgin Blue Airlines"
+      },
+      "distance_km":654
+   },
+   {
+      "id":73,
+      "departureAirport":{
+         "code":"OSH",
+         "city":"Oshkosh, WI",
+         "country":"USA"
+      },
+      "arrivalAirport":{
+         "code":"KUH",
+         "city":"Kushiro",
+         "country":"Japan"
+      },
+      "departureDate":1671887093000,
+      "flightTime":"06:34:24",
+      "allSeats":285,
+      "freeSeats":33,
+      "price":656.65,
+      "company":{
+         "id":3,
+         "name":"Virgin Blue Airlines"
+      },
+      "distance_km":9011
+   }
+]
+```
+
+### Flight
+
+#### Flight by ID
+
+GET: `/flight/{id}` \
+Return:
+* departure airport
+* arrival airport
+* departure date
+* flight time
+* all seats
+* free seats
+* price
+* company
+  Here is sample output:
+  \
+  `curl localhost:8082/flights/3`
+```
+{
+   "id":3,
+   "departureAirport":{
+      "code":"BMA",
+      "city":"Stockholm - Bromma",
+      "country":"Sweden"
+   },
+   "arrivalAirport":{
+      "code":"PIT",
+      "city":"Pittsburgh",
+      "country":"USA"
+   },
+   "departureDate":1677481771000,
+   "flightTime":"04:52:58",
+   "allSeats":167,
+   "freeSeats":30,
+   "price":1490.14,
+   "company":{
+      "id":68,
+      "name":"Air Canada"
+   },
+   "distance_km":6645
+}
+```
+
+#### flight by airport codes
+
+GET: `/flight/{departureCode}/{arrivalCode}?=date` \
+parameters:
+*date - date of flight in format "YYYY-MM-DD"
+Return:
+* departure airport
+* arrival airport
+* departure date
+* flight time
+* all seats
+* free seats
+* price
+* company
+
+  Here is sample output:
+  \
+  `curl localhost:80822/flight/CXI/ABY?date=2023-05-18`
+```
+[
+   {
+      "id":120,
+      "departureAirport":{
+         "code":"CXI",
+         "city":"Christmas Line",
+         "country":"Iceland"
+      },
+      "arrivalAirport":{
+         "code":"ABY",
+         "city":"Albany, GA",
+         "country":"USA"
+      },
+      "departureDate":1684439963000,
+      "flightTime":"09:10:01",
+      "allSeats":313,
+      "freeSeats":1,
+      "price":90.0,
+      "company":{
+         "id":64,
+         "name":"AirAsia"
+      },
+      "distance_km":8298
+   }
+]
+```
