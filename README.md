@@ -214,7 +214,7 @@ Here is sample output:
 
 #### flight by airport codes
 
-GET: `/flight/{departureCode}/{arrivalCode}?=date` \
+GET: `/flight/{departureCode}/{arrivalCode}?date={date}` \
 parameters:
 * date - date of flight in format "YYYY-MM-DD"
 
