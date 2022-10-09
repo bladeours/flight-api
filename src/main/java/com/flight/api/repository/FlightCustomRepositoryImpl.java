@@ -13,8 +13,4 @@ public class FlightCustomRepositoryImpl implements FlightCustomRepository{
         return flight.getCompany();
     }
 
-//    @Override
-//    public Flight getFlightForCodes(String departureCode, String arrivalCode) {
-//
-//    }
 }

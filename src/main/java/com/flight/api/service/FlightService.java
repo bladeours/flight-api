@@ -9,9 +9,11 @@ import com.flight.api.model.dto.raw.AirportRAW;
 import com.flight.api.repository.FlightRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,22 +45,16 @@ public class FlightService {
     }
 
     public List<FlightDTO> getFlightForCodes(String departureCode, String arrivalCode, String date) throws DateFormatException {
-        if(!dateIsValid(date, "yyyy-MM-dd")){
-            throw new DateFormatException("Incorrect date format: '2023-13-18'");
+        if(!dateIsValid(date)){
+            throw new DateFormatException("Incorrect date format: " + date);
         }
+
         return modelMapper.map(flightRepository.getFlightForCodes(departureCode, arrivalCode, date),
                 new TypeToken<List<FlightDTO>>() {}.getType());
     }
 
-    private boolean dateIsValid(String date, String format) {
-        DateFormat sdf = new SimpleDateFormat(format);
-        sdf.setLenient(false);
-        try {
-            sdf.parse(date);
-        } catch (ParseException e) {
-            return false;
-        }
-        return true;
+    private boolean dateIsValid(String date) {
+        return date.matches("^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$");
     }
 
 }
