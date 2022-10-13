@@ -1,10 +1,12 @@
 package com.flight.api.controller;
 
 import com.flight.api.exception.DateFormatException;
+import com.flight.api.model.Flight;
 import com.flight.api.model.dto.CompanyDTO;
 import com.flight.api.model.dto.FlightDTO;
 import com.flight.api.service.FlightService;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +28,6 @@ public class FlightController {
         }catch (NumberFormatException e){
             throw new NumberFormatException("flight id must be a number");
         }
-
     }
 
     @GetMapping("/company/{id}")
@@ -44,4 +45,11 @@ public class FlightController {
         System.out.println(flightService.getFlightForCodes(departureCode, arrivalCode, date));
         return flightService.getFlightForCodes(departureCode, arrivalCode, date);
     }
+
+    @PostMapping
+    public FlightDTO addFlight(@RequestBody FlightDTO flightDTO){
+        flightService.addFlight(modelMapper.map(flightDTO, Flight.class));
+        return flightDTO;
+    }
+
 }

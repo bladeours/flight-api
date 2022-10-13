@@ -13,4 +13,5 @@ public interface FlightRepository extends JpaRepository<Flight, Long>, FlightCus
             " and DATE(f.departure_date) = ?3",
             nativeQuery = true)
     List<Flight> getFlightForCodes(String departureCode, String arrivalCode, String date);
+
 }

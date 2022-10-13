@@ -1,6 +1,7 @@
 package com.flight.api.service;
 
 import com.flight.api.exception.DateFormatException;
+import com.flight.api.model.Airport;
 import com.flight.api.model.Company;
 import com.flight.api.model.Flight;
 import com.flight.api.model.dto.CompanyDTO;
@@ -14,9 +15,13 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -51,6 +56,11 @@ public class FlightService {
 
         return modelMapper.map(flightRepository.getFlightForCodes(departureCode, arrivalCode, date),
                 new TypeToken<List<FlightDTO>>() {}.getType());
+    }
+
+    public void addFlight(Flight flight){
+
+        flightRepository.save(flight);
     }
 
     private boolean dateIsValid(String date) {

@@ -10,6 +10,8 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "flight")
 public class Flight {
+
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
     @ManyToOne
@@ -57,6 +59,7 @@ public class Flight {
     }
 
     public void setId(Long id) {
+        System.out.println("ustawiam id: " + id);
         this.id = id;
     }
 

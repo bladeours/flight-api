@@ -115,4 +115,20 @@ public class FlightDTO {
     public void setArrivalAirport(AirportRAW arrivalAirport) {
         this.arrivalAirport = arrivalAirport;
     }
+
+    @Override
+    public String toString() {
+        return "FlightDTO{" +
+                "id=" + id +
+                ", departureAirport=" + departureAirport +
+                ", arrivalAirport=" + arrivalAirport +
+                ", departureDate=" + departureDate +
+                ", flightTime=" + flightTime +
+                ", allSeats=" + allSeats +
+                ", freeSeats=" + freeSeats +
+                ", price=" + price +
+                ", company=" + company +
+                ", distance_km=" + distance_km +
+                '}';
+    }
 }
