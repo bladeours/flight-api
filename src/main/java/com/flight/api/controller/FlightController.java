@@ -7,6 +7,7 @@ import com.flight.api.model.dto.FlightDTO;
 import com.flight.api.service.FlightService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,8 +49,7 @@ public class FlightController {
 
     @PostMapping
     public FlightDTO addFlight(@RequestBody FlightDTO flightDTO){
-        flightService.addFlight(modelMapper.map(flightDTO, Flight.class));
-        return flightDTO;
+        return flightService.addFlight(modelMapper.map(flightDTO, Flight.class));
     }
 
 }

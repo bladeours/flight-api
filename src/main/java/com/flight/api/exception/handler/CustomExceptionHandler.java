@@ -5,6 +5,8 @@ import com.flight.api.exception.DateFormatException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -27,6 +29,15 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
                                                                    HttpStatus status, WebRequest request) {
         String path = ((ServletWebRequest)request).getRequest().getRequestURI();
         ApiError apiError = new ApiError(status, "endpoint not found", path);
+        return new ResponseEntity<>(apiError, headers, status);
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers,
+                                                                  HttpStatus status, WebRequest request) {
+
+        String path = ((ServletWebRequest)request).getRequest().getRequestURI();
+        ApiError apiError = new ApiError(status, "Bad request body", path);
         return new ResponseEntity<>(apiError, headers, status);
     }
 

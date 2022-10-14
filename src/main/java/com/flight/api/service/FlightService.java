@@ -58,9 +58,8 @@ public class FlightService {
                 new TypeToken<List<FlightDTO>>() {}.getType());
     }
 
-    public void addFlight(Flight flight){
-
-        flightRepository.save(flight);
+    public FlightDTO addFlight(Flight flight){
+        return modelMapper.map(flightRepository.save(flight), FlightDTO.class);
     }
 
     private boolean dateIsValid(String date) {
