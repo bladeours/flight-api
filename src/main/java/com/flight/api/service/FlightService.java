@@ -49,10 +49,10 @@ public class FlightService {
         return modelMapper.map(flightRepository.getCompany(flight), CompanyDTO.class);
     }
 
-    public List<FlightDTO> getFlightForCodes(String departureCode, String arrivalCode, String date) throws DateFormatException {
-        if(!dateIsValid(date)){
-            throw new DateFormatException("Incorrect date format: " + date);
-        }
+    public List<FlightDTO> getFlightForCodes(String departureCode, String arrivalCode, String date) {
+//        if(!dateIsValid(date)){
+//            throw new DateFormatException("Incorrect date format: " + date);
+//        }
 
         return modelMapper.map(flightRepository.getFlightForCodes(departureCode, arrivalCode, date),
                 new TypeToken<List<FlightDTO>>() {}.getType());

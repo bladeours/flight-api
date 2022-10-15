@@ -1,7 +1,10 @@
 package com.flight.api.model.dto;
 
 import com.flight.api.model.dto.raw.AirportRAW;
+import org.springframework.lang.NonNull;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -17,13 +20,15 @@ public class FlightDTO {
     private int freeSeats;
     private double price;
     private CompanyDTO company;
-    private int distance_km;
+//    @NotBlank
+    @NotNull(message = "can not be null")
+    private Integer distance_km;
 
     public FlightDTO() {
     }
 
     public FlightDTO(Long id, AirportRAW departureAirport, AirportRAW arrivalAirport, Timestamp departureDate, Time flightTime, int allSeats,
-                     int freeSeats, double price, CompanyDTO company, int distance_km) {
+                     int freeSeats, double price, CompanyDTO company, Integer distance_km) {
         this.id = id;
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
@@ -92,11 +97,11 @@ public class FlightDTO {
         this.company = company;
     }
 
-    public int getDistance_km() {
+    public Integer getDistance_km() {
         return distance_km;
     }
 
-    public void setDistance_km(int distance_km) {
+    public void setDistance_km(Integer distance_km) {
         this.distance_km = distance_km;
     }
 

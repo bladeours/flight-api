@@ -59,7 +59,6 @@ public class Flight {
     }
 
     public void setId(Long id) {
-        System.out.println("ustawiam id: " + id);
         this.id = id;
     }
 
