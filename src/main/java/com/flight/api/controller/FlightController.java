@@ -59,4 +59,9 @@ public class FlightController {
         return flightService.addFlight(modelMapper.map(flightDTO, Flight.class));
     }
 
+    @GetMapping("/all")
+    public List<FlightDTO> getAllFlights(){
+        return flightService.getAllFlights();
+    }
+
 }

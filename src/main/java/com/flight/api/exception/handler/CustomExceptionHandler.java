@@ -90,14 +90,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, ex.getMessage(), path);
         return new ResponseEntity<>(apiError,new HttpHeaders(), HttpStatus.NOT_FOUND);
     }
-
-//    @ExceptionHandler(DateFormatException.class)
-//    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-//    protected ResponseEntity<Object> handleDateFormatException(DateFormatException ex, WebRequest request){
-//        String path = ((ServletWebRequest)request).getRequest().getRequestURI();
-//        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST,ex.getMessage(), path);
-//        return new ResponseEntity<>(apiError,new HttpHeaders(), HttpStatus.BAD_REQUEST);
-//    }
+    
 
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)

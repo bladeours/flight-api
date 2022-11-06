@@ -50,9 +50,7 @@ public class FlightService {
     }
 
     public List<FlightDTO> getFlightForCodes(String departureCode, String arrivalCode, String date) {
-//        if(!dateIsValid(date)){
-//            throw new DateFormatException("Incorrect date format: " + date);
-//        }
+
 
         return modelMapper.map(flightRepository.getFlightForCodes(departureCode, arrivalCode, date),
                 new TypeToken<List<FlightDTO>>() {}.getType());
@@ -64,6 +62,10 @@ public class FlightService {
 
     private boolean dateIsValid(String date) {
         return date.matches("^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$");
+    }
+
+    public List<FlightDTO> getAllFlights(){
+        return modelMapper.map(flightRepository.findAll(),new TypeToken<List<FlightDTO>>() {}.getType());
     }
 
 }

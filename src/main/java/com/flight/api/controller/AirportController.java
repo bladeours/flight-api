@@ -32,7 +32,7 @@ public class AirportController {
         return modelMapper.map(airportService.findByCode(code), AirportRAW.class);
     }
 
-    @GetMapping("/airports")
+    @GetMapping("/all")
     public List<AirportRAW> getAirports(){
         return airportService.listAllAirports();
     }
