@@ -36,9 +36,9 @@ public class CompanyController {
     }
 
     @GetMapping("/flights/{companyId}")
-    public List<FlightDTO> getFlightsForCompany(@PathVariable String companyId){
+    public List<FlightDTO> getFlightsForCompany(@PathVariable String id){
         try{
-            return modelMapper.map(companyService.getFlightsForCompany(Long.parseLong(companyId)),
+            return modelMapper.map(companyService.getFlightsForCompany(Long.parseLong(id)),
                                     new TypeToken<List<FlightDTO>>() {}.getType());
 
         }catch (NumberFormatException e) {

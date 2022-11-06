@@ -25,9 +25,7 @@ public class AirportService {
     }
 
     public List<AirportRAW> listAllAirports(){
-        System.out.println(airportRepository.findAll());
         return modelMapper.map(airportRepository.findAll(), new TypeToken<List<AirportRAW>>() {}.getType()) ;
-//        return new ArrayList<>();
     }
 
     public AirportDTO findByCode(String code){
@@ -37,8 +35,6 @@ public class AirportService {
                     new TypeToken<List<FlightDTO>>() {}.getType());
             List<FlightDTO> arrivalFlightsDTO = modelMapper.map(airportTmp.getArrivalFlights(),
                     new TypeToken<List<FlightDTO>>() {}.getType());
-
-
             return new AirportDTO(airportTmp.getCode(), airportTmp.getCity(), airportTmp.getCountry(),
                     departureFlightsDTO, arrivalFlightsDTO);
         }catch (NoSuchElementException e){
