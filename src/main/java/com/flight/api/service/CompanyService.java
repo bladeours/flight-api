@@ -12,30 +12,12 @@ import java.util.Set;
 
 @Service
 @Transactional
-public class CompanyService {
+public interface CompanyService {
 
-    private final CompanyRepository companyRepository;
+    public List<Company> listAllCompanies();
 
-    public CompanyService(CompanyRepository companyRepository) {
-        this.companyRepository = companyRepository;
-    }
+    public Company getCompany(Long id);
 
-    public List<Company> listAllCompanies(){
-        return companyRepository.findAll();
-    }
-
-    public Company getCompany(Long id){
-        try{
-            return companyRepository.findById(id).get();
-        }catch (NoSuchElementException e){
-            throw new NoSuchElementException("there is no company with id=" + id);
-        }
-
-    }
-
-    public List<Flight> getFlightsForCompany(Long companyId){
-        Company company = getCompany(companyId);
-        return companyRepository.findFlightsForCompany(company);
-    }
+    public List<Flight> getFlightsForCompany(Long companyId);
 
 }

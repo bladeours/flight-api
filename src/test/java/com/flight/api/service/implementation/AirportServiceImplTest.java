@@ -1,11 +1,11 @@
-package com.flight.api.service;
+package com.flight.api.service.implementation;
 
 import com.flight.api.repository.AirportRepository;
+import com.flight.api.service.AirportService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.NoSuchElementException;
@@ -14,14 +14,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
-class AirportServiceTest {
+class AirportServiceImplTest {
     @Mock
     AirportRepository airportRepository;
     AirportService airportService;
 
     @BeforeEach
     void setUp() {
-        airportService = new AirportService(airportRepository);
+        airportService = new AirportServiceImpl(airportRepository);
     }
 
     @Test

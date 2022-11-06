@@ -1,6 +1,7 @@
-package com.flight.api.service;
+package com.flight.api.service.implementation;
 
 import com.flight.api.repository.CompanyRepository;
+import com.flight.api.service.CompanyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,14 +13,14 @@ import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-class CompanyServiceTest {
+class CompanyServiceImplTest {
     @Mock
     CompanyRepository companyRepository;
     CompanyService companyService;
 
     @BeforeEach
     void setUp() {
-        companyService = new CompanyService(companyRepository);
+        companyService = new CompanyServiceImpl(companyRepository);
     }
 
     @Test

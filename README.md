@@ -100,7 +100,7 @@ Here is sample output:
 
 #### All airports
 
-GET: `/airport/airports` \
+GET: `/airport/all` \
 Return all airports with fields:
 * code
 * city
@@ -167,6 +167,7 @@ Here is sample output:
    }
 ]
 ```
+
 
 ### Flight
 

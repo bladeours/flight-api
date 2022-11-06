@@ -16,30 +16,9 @@ import java.util.NoSuchElementException;
 
 @Service
 @Transactional
-public class AirportService {
-    private final AirportRepository airportRepository;
-    private ModelMapper modelMapper = new ModelMapper();
+public interface AirportService {
 
-    public AirportService(AirportRepository airportRepository) {
-        this.airportRepository = airportRepository;
-    }
+    public List<AirportRAW> listAllAirports();
 
-    public List<AirportRAW> listAllAirports(){
-        return modelMapper.map(airportRepository.findAll(), new TypeToken<List<AirportRAW>>() {}.getType()) ;
-    }
-
-    public AirportDTO findByCode(String code){
-        try{
-            Airport airportTmp = airportRepository.findById(code).get();
-            List<FlightDTO> departureFlightsDTO = modelMapper.map(airportTmp.getDepartureFlights(),
-                    new TypeToken<List<FlightDTO>>() {}.getType());
-            List<FlightDTO> arrivalFlightsDTO = modelMapper.map(airportTmp.getArrivalFlights(),
-                    new TypeToken<List<FlightDTO>>() {}.getType());
-            return new AirportDTO(airportTmp.getCode(), airportTmp.getCity(), airportTmp.getCountry(),
-                    departureFlightsDTO, arrivalFlightsDTO);
-        }catch (NoSuchElementException e){
-            throw new NoSuchElementException("There is no airport with code=" + code);
-        }
-
-    }
+    public AirportDTO findByCode(String code);
 }
