@@ -1,13 +1,10 @@
 package com.flight.api.exception.handler;
 
 import com.flight.api.exception.ApiError;
-import com.flight.api.exception.DateFormatException;
-import org.springframework.boot.context.properties.bind.validation.ValidationErrors;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -23,9 +20,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import javax.validation.Path;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 @EnableWebMvc
 @RestControllerAdvice

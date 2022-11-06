@@ -36,4 +36,9 @@ public class CompanyServiceImpl implements CompanyService {
         Company company = getCompany(companyId);
         return companyRepository.findFlightsForCompany(company);
     }
+
+    @Override
+    public Company getCompanyForFlight(Flight flight) {
+        return companyRepository.findByFlights(flight);
+    }
 }

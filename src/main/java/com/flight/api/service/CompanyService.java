@@ -14,10 +14,9 @@ import java.util.Set;
 @Transactional
 public interface CompanyService {
 
-    public List<Company> listAllCompanies();
-
-    public Company getCompany(Long id);
-
-    public List<Flight> getFlightsForCompany(Long companyId);
+    List<Company> listAllCompanies();
+    Company getCompany(Long id);
+    List<Flight> getFlightsForCompany(Long companyId);
+    Company getCompanyForFlight(Flight flight);
 
 }

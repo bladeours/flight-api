@@ -35,7 +35,7 @@ public class CompanyController {
 
     }
 
-    @GetMapping("/flights/{companyId}")
+    @GetMapping("/flights/{id}")
     public List<FlightDTO> getFlightsForCompany(@PathVariable String id){
         try{
             return modelMapper.map(companyService.getFlightsForCompany(Long.parseLong(id)),

@@ -3,7 +3,9 @@ package com.flight.api.service.implementation;
 import com.flight.api.model.Flight;
 import com.flight.api.model.dto.CompanyDTO;
 import com.flight.api.model.dto.FlightDTO;
+import com.flight.api.repository.CompanyRepository;
 import com.flight.api.repository.FlightRepository;
+import com.flight.api.service.CompanyService;
 import com.flight.api.service.FlightService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -18,9 +20,11 @@ import java.util.NoSuchElementException;
 public class FlightServiceImpl implements FlightService {
     private final FlightRepository flightRepository;
     private ModelMapper modelMapper = new ModelMapper();
+    private final CompanyService companyService;
 
-    public FlightServiceImpl(FlightRepository flightRepository) {
+    public FlightServiceImpl(FlightRepository flightRepository,  CompanyService companyService) {
         this.flightRepository = flightRepository;
+        this.companyService = companyService;
     }
 
     public Flight getFlight(Long id){
@@ -33,22 +37,16 @@ public class FlightServiceImpl implements FlightService {
 
     public CompanyDTO getCompany(Long id){
         Flight flight = getFlight(id);
-        return modelMapper.map(flightRepository.getCompany(flight), CompanyDTO.class);
+        return modelMapper.map(companyService.getCompanyForFlight(flight), CompanyDTO.class);
     }
 
     public List<FlightDTO> getFlightForCodes(String departureCode, String arrivalCode, String date) {
-
-
         return modelMapper.map(flightRepository.getFlightForCodes(departureCode, arrivalCode, date),
                 new TypeToken<List<FlightDTO>>() {}.getType());
     }
 
     public FlightDTO addFlight(Flight flight){
         return modelMapper.map(flightRepository.save(flight), FlightDTO.class);
-    }
-
-    private boolean dateIsValid(String date) {
-        return date.matches("^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$");
     }
 
     public List<FlightDTO> getAllFlights(){
