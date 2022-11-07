@@ -21,7 +21,7 @@ CREATE TABLE `flight` (
   `all_seats` int unsigned NOT NULL,
   `free_seats` int unsigned NOT NULL,
   `price` double NOT NULL,
-  `company` int unsigned NOT NULL,
+  `company_id` int unsigned NOT NULL,
   `distance_km` int unsigned NOT NULL,
   KEY `flight_departure_airport_arrival_airport_index` (`departure_airport`,`arrival_airport`),
   KEY `flight_arrival_airport_foreign` (`arrival_airport`),

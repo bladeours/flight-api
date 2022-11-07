@@ -1,6 +1,5 @@
 package com.flight.api.controller;
 
-import com.flight.api.exception.DateFormatException;
 import com.flight.api.model.Flight;
 import com.flight.api.model.dto.CompanyDTO;
 import com.flight.api.model.dto.FlightDTO;
@@ -8,13 +7,10 @@ import com.flight.api.service.FlightService;
 import com.flight.api.validate.annotation.DateValidation;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Validated

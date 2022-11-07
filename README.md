@@ -24,7 +24,23 @@ I've created this project to get information about flights, I'm using it in
 // TODO
 
 ## Setup
-// TODO
+
+### install on local machine
+
+#### install MySQL
+check official [MySQL Documentation](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/)
+
+#### Create database & import data
+```
+Type: mysql -u username -p any_database_name < database/create_whole_database.sql
+script create database so you don't have worry about database name
+If you've assigned a password, type it now and press Enter.
+```
+
+#### Run API
+**this app requires Java 17** \
+`java -jar flightApi.jar`
+
 ## endpoints
 
 ### Airport
