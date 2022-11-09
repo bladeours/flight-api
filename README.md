@@ -1,4 +1,4 @@
-# flight REST API
+# Flight REST API
 Simple REST API that returns information about airports.
 
 ## Table of Contents
@@ -26,9 +26,9 @@ It uses MySQL database to store data.
 
 ## Setup
 
-### install on local machine
+### Install on local machine
 
-#### install MySQL
+#### Install MySQL
 check official [MySQL Documentation](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/)
 
 #### Create database & import data
@@ -37,6 +37,17 @@ Type: mysql -u username -p any_database_name < database/create_whole_database.sq
 script create database so you don't have worry about database name
 If you've assigned a password, type it now and press Enter.
 ```
+
+### Run with docker
+
+#### Docker-compose
+
+* `git clone https://github.com/bladeours/flight-api.git`
+* `docker-compose -d`
+
+if you want to change ports or credentials then edit `.env` file. \
+Unfortunately container with api needs to restart couple times because it needs wait for
+mysql container at this moment. I'll improve this in the future. 
 
 #### Run API
 **this app requires Java 17** \
@@ -230,7 +241,7 @@ Here is sample output:
 }
 ```
 
-#### flight by airport codes
+#### Flight by airport codes
 
 GET: `/flight/{departureCode}/{arrivalCode}?date={date}` \
 parameters:
