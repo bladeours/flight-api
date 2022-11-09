@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.flight</groupId>
-    <artifactId>flightAPI</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>flightAPI</name>
-    <description>flightAPI</description>
+    <artifactId>flightApi</artifactId>
+    <version>0.0.1</version>
+    <name>flightApi</name>
+    <description>flightApi</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -60,6 +60,9 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>
+            ${artifactId}
+        </finalName>
     </build>
 
 </project>
