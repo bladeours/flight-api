@@ -37,11 +37,13 @@ Type: mysql -u username -p any_database_name < database/create_whole_database.sq
 script create database so you don't have worry about database name
 If you've assigned a password, type it now and press Enter.
 ```
+#### Run API
+**this app requires Java 17** \
+`java -jar flightApi.jar`
 
 ### Run with docker
 
 #### Docker-compose
-
 * `git clone https://github.com/bladeours/flight-api.git`
 * `docker-compose -d`
 
@@ -49,9 +51,7 @@ if you want to change ports or credentials then edit `.env` file. \
 Unfortunately container with api needs to restart couple times because it needs wait for
 mysql container at this moment. I'll improve this in the future. 
 
-#### Run API
-**this app requires Java 17** \
-`java -jar flightApi.jar`
+
 
 ## endpoints
 
