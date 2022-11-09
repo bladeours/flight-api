@@ -25,9 +25,9 @@ CREATE TABLE `flight` (
   `distance_km` int unsigned NOT NULL,
   KEY `flight_departure_airport_arrival_airport_index` (`departure_airport`,`arrival_airport`),
   KEY `flight_arrival_airport_foreign` (`arrival_airport`),
-  KEY `flight_company_foreign` (`company`),
+  KEY `flight_company_foreign` (`company_id`),
   CONSTRAINT `flight_arrival_airport_foreign` FOREIGN KEY (`arrival_airport`) REFERENCES `airport` (`code`),
-  CONSTRAINT `flight_company_foreign` FOREIGN KEY (`company`) REFERENCES `company` (`id`),
+  CONSTRAINT `flight_company_foreign` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`),
   CONSTRAINT `flight_departure_airport_foreign` FOREIGN KEY (`departure_airport`) REFERENCES `airport` (`code`)
 );
 
