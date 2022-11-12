@@ -19,7 +19,7 @@ services:
       - mysql
     env_file:
       - ./.env
-    build: .
+    image: bladeours/flight-api
     ports:
       - "$SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT"
     environment:
