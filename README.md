@@ -3,26 +3,24 @@ Simple REST API that returns information about airports.
 
 ## Table of Contents
 * [General info](#general-info)
-* [Authorization](#authorization)
 * [Technologies Used](#technologies-used)
 * [Setup](#setup)
 * [Endpoints](#endpoints)
+* [Authorization](#authorization)
 
 
 ## General Info
 This REST API is a part of Flight Search Engine project. \
 I've created this project to get information about flights, I'm using it in
 [flight search engine MVC](https://github.com/bladeours/flight-search-engine) project.
-It uses MySQL database to store data.
+It uses MySQL database to store data and uses [flight generator](https://github.com/bladeours/flight-generator) to
+generate flights.
 
 
 ## Technologies Used
 * Spring
 * Java 17
 * MySQL
-
-## Authorization
-// TODO
 
 ## Setup
 
@@ -51,10 +49,7 @@ if you want to change ports or credentials then edit `.env` file. \
 Unfortunately container with api needs to restart couple times because it needs wait for
 mysql container at this moment. I'll improve this in the future. 
 
-
-
 ## endpoints
-
 ### Airport
 #### Airport by code
 GET: `/airport/{code}` \
@@ -199,6 +194,54 @@ Here is sample output:
 
 ### Flight
 
+POST: `/flight` \
+Request:
+* departure airport
+* arrival airport
+* departure date
+* flight time
+* all seats
+* free seats
+* price
+* company
+* distance_km
+ 
+Sample body:
+```
+{
+    "departureAirport": {
+        "code": "YOP",
+        "city": "Rainbow Lake, AB",
+        "country": "Canada"
+    },
+    "arrivalAirport": {
+        "code": "CCZ",
+        "city": "Chub Cay",
+        "country": "Bahamas"
+    },
+    "departureDate": 1667157880,
+    "flightTime": "06:41:58",
+    "allSeats": 209,
+    "freeSeats": 174,
+    "price": 319.72,
+    "company": {
+        "id": 30,
+        "name": "LAN Airlines"
+    },
+    "distance_km": 4892
+}
+```
+Return:
+* departure airport
+* arrival airport
+* departure date
+* flight time
+* all seats
+* free seats
+* price
+* company
+* distance_km
+
 #### Flight by ID
 
 GET: `/flight/{id}` \
@@ -211,6 +254,7 @@ Return:
 * free seats
 * price
 * company
+* distance_km
 
 Here is sample output:
   \
@@ -280,3 +324,6 @@ Here is sample output:
    }
 ]
 ```
+
+## Authorization
+// TODO
