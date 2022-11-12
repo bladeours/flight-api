@@ -3,7 +3,6 @@ package com.flight.api.service.implementation;
 import com.flight.api.model.Flight;
 import com.flight.api.model.dto.CompanyDTO;
 import com.flight.api.model.dto.FlightDTO;
-import com.flight.api.repository.CompanyRepository;
 import com.flight.api.repository.FlightRepository;
 import com.flight.api.service.CompanyService;
 import com.flight.api.service.FlightService;
