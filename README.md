@@ -13,7 +13,7 @@ Simple REST API that returns information about airports.
 This REST API is a part of Flight Search Engine project. \
 I've created this project to get information about flights, I'm using it in
 [flight search engine MVC](https://github.com/bladeours/flight-search-engine) project.
-It uses MySQL database to store data and uses [flight generator](https://github.com/bladeours/flight-generator) to
+It uses MySQL database to store data and uses [flight generator](https://github.com/bladeours/random-flights-generator) to
 generate flights.
 
 
@@ -23,6 +23,16 @@ generate flights.
 * MySQL
 
 ## Setup
+
+### Run with docker
+
+#### Docker-compose
+* `git clone https://github.com/bladeours/flight-api.git`
+* `docker-compose -d`
+
+if you want to change ports or credentials then edit `.env` file. \
+Unfortunately container with api needs to restart couple times because it needs wait for
+mysql container at this moment. I'll improve this in the future. 
 
 ### Install on local machine
 
@@ -38,16 +48,6 @@ If you've assigned a password, type it now and press Enter.
 #### Run API
 **this app requires Java 17** \
 `java -jar flightApi.jar`
-
-### Run with docker
-
-#### Docker-compose
-* `git clone https://github.com/bladeours/flight-api.git`
-* `docker-compose -d`
-
-if you want to change ports or credentials then edit `.env` file. \
-Unfortunately container with api needs to restart couple times because it needs wait for
-mysql container at this moment. I'll improve this in the future. 
 
 ## endpoints
 ### Airport
