@@ -47,7 +47,9 @@ If you've assigned a password, type it now and press Enter.
 ```
 #### Run API
 **this app requires Java 17** \
-`java -jar flightApi.jar`
+* Download [release](https://github.com/bladeours/flight-api/releases/latest)
+* `java -jar flightApi.jar`
+* app runs on port 8082
 
 ## endpoints
 ### Airport
