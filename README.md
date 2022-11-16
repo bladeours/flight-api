@@ -46,7 +46,7 @@ script create database so you don't have worry about database name
 If you've assigned a password, type it now and press Enter.
 ```
 #### Run API
-**this app requires Java 17** \
+**this app requires Java 17**
 * Download [release](https://github.com/bladeours/flight-api/releases/latest)
 * `java -jar flightApi.jar`
 * app runs on port 8082
