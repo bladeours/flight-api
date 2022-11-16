@@ -61,7 +61,7 @@
             </plugin>
         </plugins>
         <finalName>
-            ${artifactId}
+            ${project.artifactId}
         </finalName>
     </build>
 
