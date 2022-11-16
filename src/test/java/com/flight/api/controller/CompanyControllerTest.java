@@ -1,18 +1,24 @@
 package com.flight.api.controller;
 
 import com.flight.api.service.CompanyService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class CompanyControllerTest {
-    @Autowired
+    @Mock
+    CompanyService companyService;
     CompanyController companyController;
+
+    @BeforeEach
+    void setUp() {
+        companyController = new CompanyController(companyService);
+    }
 
     @Test
     public void getCompany_IdIsNotANumber_ThrowException(){
